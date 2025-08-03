@@ -1,0 +1,1292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VivaDecor - Interior Design Services</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<style>
+    /* Reset and Base Styles */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Inter', sans-serif;
+        line-height: 1.6;
+        color: #333;
+        overflow-x: hidden;
+    }
+
+    /* Header Styles */
+    .header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+        padding: 1rem 0;
+    }
+
+    .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-weight: 700;
+        font-size: 1.5rem;
+        color: #000;
+    }
+
+    .logo i {
+        color: #000;
+    }
+
+    .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+    }
+
+    .nav-links a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+        transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+        color: #666;
+    }
+
+    .signup-btn {
+        background: #000;
+        color: white;
+        border: none;
+        padding: 0.75rem 1.5rem;
+        border-radius: 5px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+    .signup-btn:hover {
+        background: #333;
+    }
+
+    /* Hero Section */
+    .hero {
+        padding: 120px 0 80px;
+        background: #fff;
+    }
+
+    .hero-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+    }
+
+    .hero-content h1 {
+        font-size: 3.5rem;
+        font-weight: 700;
+        color: #000;
+        margin-bottom: 1.5rem;
+        line-height: 1.2;
+    }
+
+    .hero-content p {
+        font-size: 1.1rem;
+        color: #666;
+        margin-bottom: 2rem;
+        line-height: 1.8;
+    }
+
+    .cta-btn {
+        background: #000;
+        color: white;
+        border: none;
+        padding: 1rem 2rem;
+        border-radius: 5px;
+        font-weight: 600;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+    .cta-btn:hover {
+        background: #333;
+    }
+
+    .hero-images {
+        position: relative;
+    }
+
+    .image-stack {
+        position: relative;
+        height: 500px;
+    }
+
+    .hero-img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+
+    .top-img {
+        top: -20px;
+        right: -20px;
+        z-index: 2;
+    }
+
+    .bottom-img {
+        bottom: -20px;
+        left: -20px;
+        z-index: 1;
+    }
+
+    .scroll-indicator {
+        position: absolute;
+        bottom: -60px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        background: #000;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .scroll-arrow {
+        width: 0;
+        height: 0;
+        border-left: 6px solid transparent;
+        border-right: 6px solid transparent;
+        border-top: 8px solid white;
+    }
+
+    /* Statistics Section */
+    .stats {
+        padding: 80px 0;
+        background: #f8f9fa;
+    }
+
+    .stats-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+
+    .stat-item {
+        text-align: center;
+    }
+
+    .stat-item h3 {
+        font-size: 3rem;
+        font-weight: 700;
+        color: #000;
+        margin-bottom: 0.5rem;
+    }
+
+    .stat-item p {
+        font-size: 1.1rem;
+        color: #666;
+        font-weight: 500;
+    }
+
+    /* Services Section */
+    .services {
+        padding: 80px 0;
+        background: #fff;
+    }
+
+    .services-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+    }
+
+    .services-container h2 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #000;
+        margin-bottom: 3rem;
+        text-align: center;
+    }
+
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+
+    .service-card {
+        background: #fff;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        position: relative;
+        transition: transform 0.3s ease;
+    }
+
+    .service-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .service-card.featured {
+        border: 2px solid #e0e0e0;
+    }
+
+    .service-icon {
+        width: 60px;
+        height: 60px;
+        background: #f8f9fa;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+    }
+
+    .service-icon i {
+        font-size: 1.5rem;
+        color: #000;
+    }
+
+    .service-card h3 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #000;
+        margin-bottom: 1rem;
+    }
+
+    .service-card p {
+        color: #666;
+        line-height: 1.6;
+    }
+
+    .badge {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: #f0f0f0;
+        color: #000;
+        padding: 0.25rem 0.5rem;
+        border-radius: 3px;
+        font-size: 0.8rem;
+        font-weight: 600;
+    }
+
+    /* Design Process Section */
+    .design-process {
+        padding: 80px 0;
+        background: #f8f9fa;
+    }
+
+    .process-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+    }
+
+    .process-content h2 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #000;
+        margin-bottom: 1.5rem;
+    }
+
+    .process-content p {
+        font-size: 1.1rem;
+        color: #666;
+        margin-bottom: 2rem;
+        line-height: 1.8;
+    }
+
+    .accordion {
+        margin-bottom: 2rem;
+    }
+
+    .accordion-item {
+        background: #fff;
+        border-radius: 5px;
+        margin-bottom: 1rem;
+        overflow: hidden;
+    }
+
+    .accordion-header {
+        padding: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+    .accordion-header:hover {
+        background: #f8f9fa;
+    }
+
+    .accordion-header span {
+        font-weight: 500;
+        color: #000;
+    }
+
+    .accordion-header i {
+        color: #666;
+    }
+
+    .process-image img {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+
+    .learn-more-btn {
+        background: #333;
+        color: white;
+        border: none;
+        padding: 1rem 2rem;
+        border-radius: 5px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+    .learn-more-btn:hover {
+        background: #000;
+    }
+
+    /* Three Steps Section */
+    .three-steps {
+        padding: 80px 0;
+        background: #fff;
+    }
+
+    .steps-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+    }
+
+    .steps-content h2 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #000;
+        margin-bottom: 3rem;
+    }
+
+    .steps-list {
+        position: relative;
+    }
+
+    .steps-list::before {
+        content: '';
+        position: absolute;
+        left: 30px;
+        top: 60px;
+        bottom: 60px;
+        width: 2px;
+        background: transparent;
+        z-index: 1;
+    }
+
+    .step-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 2.5rem;
+        position: relative;
+    }
+
+    .step-icon {
+        width: 60px;
+        height: 60px;
+        background: #000;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 1.5rem;
+        z-index: 2;
+        position: relative;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+    }
+
+    .step-icon:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .step-icon i {
+        color: white;
+        font-size: 1.5rem;
+        transition: all 0.3s ease;
+    }
+
+    .step-icon:hover i {
+        transform: scale(1.1);
+    }
+
+    .step-content h3 {
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: #000;
+        margin-bottom: 0.5rem;
+    }
+
+    .step-content p {
+        color: #666;
+        line-height: 1.5;
+        margin: 0;
+    }
+
+    .steps-image img {
+        width: 100%;
+        height: 500px;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+
+    /* Testimonials Section */
+    .testimonials {
+        padding: 80px 0;
+        background: #f8f9fa;
+    }
+
+    .testimonials-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+    }
+
+    .testimonials-image {
+        position: relative;
+    }
+
+    .testimonials-image img {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+
+    .image-nav {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+
+    .nav-btn {
+        width: 40px;
+        height: 40px;
+        background: #f0f0f0;
+        border: none;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+    .nav-btn:hover {
+        background: #e0e0e0;
+    }
+
+    .testimonials-content h2 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #000;
+        margin-bottom: 2rem;
+    }
+
+    .testimonials-grid {
+        display: grid;
+        gap: 1.5rem;
+    }
+
+    .testimonial-card {
+        background: #333;
+        color: white;
+        padding: 2rem;
+        border-radius: 10px;
+        position: relative;
+    }
+
+    .quote {
+        font-size: 3rem;
+        color: #666;
+        margin-bottom: 1rem;
+    }
+
+    .testimonial-card p {
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+    }
+
+    .testimonial-author {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .testimonial-author img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    .author-info h4 {
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+    }
+
+    .author-info p {
+        font-size: 0.9rem;
+        color: #ccc;
+        margin: 0;
+    }
+
+    /* Newsletter Section */
+    .newsletter {
+        padding: 80px 0;
+        background: #fff;
+    }
+
+    .newsletter-container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        text-align: center;
+    }
+
+    .newsletter-container h2 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #000;
+        margin-bottom: 1rem;
+    }
+
+    .newsletter-container p {
+        font-size: 1.1rem;
+        color: #666;
+        margin-bottom: 2rem;
+        line-height: 1.6;
+    }
+
+    .newsletter-form {
+        display: flex;
+        gap: 1rem;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    .input-group {
+        flex: 1;
+        position: relative;
+    }
+
+    .input-group i {
+        position: absolute;
+        left: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #666;
+    }
+
+    .newsletter-form input {
+        width: 100%;
+        padding: 1rem 1rem 1rem 3rem;
+        border: 1px solid #e0e0e0;
+        border-radius: 5px;
+        font-size: 1rem;
+    }
+
+    .newsletter-form button {
+        background: #333;
+        color: white;
+        border: none;
+        padding: 1rem 2rem;
+        border-radius: 5px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+    .newsletter-form button:hover {
+        background: #000;
+    }
+
+    /* Footer */
+    .footer {
+        background: #333;
+        color: white;
+        padding: 60px 0 40px;
+    }
+
+    .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+    }
+
+    .footer-logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        border: 1px solid white;
+        padding: 0.5rem 1rem;
+        display: inline-block;
+    }
+
+    .footer-column p {
+        color: #ccc;
+        margin-bottom: 1.5rem;
+        line-height: 1.6;
+    }
+
+    .social-links {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .social-links a {
+        color: white;
+        font-size: 1.2rem;
+        transition: color 0.3s ease;
+    }
+
+    .social-links a:hover {
+        color: #ccc;
+    }
+
+    .footer-column h3 {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+    }
+
+    .footer-column ul {
+        list-style: none;
+    }
+
+    .footer-column ul li {
+        margin-bottom: 0.5rem;
+    }
+
+    .footer-column ul li a {
+        color: #ccc;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .footer-column ul li a:hover {
+        color: white;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+
+        .hero-container,
+        .process-container,
+        .steps-container,
+        .testimonials-container {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .services-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .footer-container {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .nav-container {
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .nav-links {
+            gap: 1rem;
+        }
+
+        .hero-content h1 {
+            font-size: 2.5rem;
+        }
+
+        .stats-container {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .services-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .newsletter-form {
+            flex-direction: column;
+        }
+
+        .footer-container {
+            grid-template-columns: 1fr;
+            text-align: center;
+        }
+
+        .social-links {
+            justify-content: center;
+        }
+    }
+
+    @media (max-width: 480px) {
+
+        .hero-container,
+        .process-container,
+        .steps-container,
+        .testimonials-container {
+            padding: 0 1rem;
+        }
+
+        .hero-content h1 {
+            font-size: 2rem;
+        }
+
+        .hero-content p {
+            font-size: 1rem;
+        }
+
+        .services-container h2,
+        .process-content h2,
+        .steps-content h2,
+        .testimonials-content h2,
+        .newsletter-container h2 {
+            font-size: 2rem;
+        }
+
+        .image-stack {
+            height: 300px;
+        }
+
+        .step-icon {
+            width: 50px;
+            height: 50px;
+            margin-right: 1rem;
+        }
+
+        .step-content h3 {
+            font-size: 1.2rem;
+        }
+    }
+
+    /* Smooth scrolling */
+    html {
+        scroll-behavior: smooth;
+    }
+
+    /* Animation for scroll indicator */
+    @keyframes bounce {
+
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+            transform: translateY(0);
+        }
+
+        40% {
+            transform: translateY(-10px);
+        }
+
+        60% {
+            transform: translateY(-5px);
+        }
+    }
+
+    .scroll-arrow {
+        animation: bounce 2s infinite;
+    }
+
+    /* Animation for step icons */
+    @keyframes float {
+
+        0%,
+        100% {
+            transform: translateY(0px);
+        }
+
+        50% {
+            transform: translateY(-3px);
+        }
+    }
+
+    .step-icon {
+        animation: float 4s ease-in-out infinite;
+    }
+
+    .step-icon:hover {
+        animation: none;
+    }
+</style>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="logo">
+
+                    <span>VivaDecor</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#support">Support</a></li>
+                </ul>
+                <button class="signup-btn">Sign Up</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Interior Design</h1>
+                <p>Step into a world where the art of Interior Design is meticulously crafted to bring together timeless
+                    elegance and cutting-edge modern Innovation, Allowing you to transform your living spaces into the
+                    epitome of luxury and sophistication</p>
+                <button class="cta-btn">Start Project</button>
+            </div>
+            <div class="hero-images">
+                <div class="image-stack">
+                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                        alt="Modern Living Room" class="hero-img top-img">
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="stats">
+        <div class="stats-container">
+            <div class="stat-item">
+                <h3>400+</h3>
+                <p>Project Complete</p>
+            </div>
+            <div class="stat-item">
+                <h3>600+</h3>
+                <p>Satisfied Clients</p>
+            </div>
+            <div class="stat-item">
+                <h3>100+</h3>
+                <p>Unique Styles</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="services-container">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Lighting Design</h3>
+                    <p>Achieve the perfect balance of ambient, task, and accent lighting for a functional atmosphere</p>
+                </div>
+                <div class="service-card featured">
+                    <div class="service-icon">
+                        <i class="fas fa-couch"></i>
+                    </div>
+                    <h3>Interior Design</h3>
+                    <p>From concept to completion, we oversee every detail to bring your vision to life efficiently</p>
+                    <div class="badge">YN2</div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-tree"></i>
+                    </div>
+                    <h3>Outdoor Design</h3>
+                    <p>Celebrate the changing seasons with our seasonal outdoor decor services</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Design Process Section -->
+    <section class="design-process">
+        <div class="process-container">
+            <div class="process-content">
+                <h2>Designing Your Dream With Brilliance</h2>
+                <p>Elevate your spaces with bespoke interior designs that reflect your unique style and aspirations,
+                    crafted with precision and brilliance for an unforgettable living experience</p>
+
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <span>Living Room Interior Design</span>
+                            <div class="badge">IY</div>
+                            <i class="fas fa-plus"></i>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <span>Commercial Office Room Interior Design</span>
+                            <i class="fas fa-plus"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="learn-more-btn">Learn More</button>
+            </div>
+            <div class="process-image">
+                <img src="https://images.unsplash.com/photo-1618220179428-22790b461013?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                    alt="Modern Living Room">
+            </div>
+        </div>
+    </section>
+
+    <!-- Three Steps Section -->
+    <section class="three-steps">
+        <div class="steps-container">
+            <div class="steps-content">
+                <h2>Designing Your Dream in Three Simple Steps</h2>
+
+                <div class="steps-list">
+                    <div class="step-item">
+                        <div class="step-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <div class="step-content">
+                            <h3>Start Project</h3>
+                            <p>Embark on your design adventure by initiating your project. Share your vision and set the
+                                stage for a bespoke design experience</p>
+                        </div>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <div class="step-content">
+                            <h3>Craft</h3>
+                            <p>Collaborate closely to achieve design excellence refining your vision and crafting
+                                brilliance into every aspect of your space</p>
+                        </div>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-icon">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <div class="step-content">
+                            <h3>Execute</h3>
+                            <p>Witness your vision becoming a reality as we execute the design plan with precision.
+                                Celebrate the joy of your newly transformed space</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="steps-image">
+                <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                    alt="Living Room">
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="testimonials-container">
+            <div class="testimonials-image">
+                <img src="https://images.unsplash.com/photo-1618220179428-22790b461013?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                    alt="Interior Space">
+                <div class="image-nav">
+                    <button class="nav-btn"><i class="fas fa-chevron-left"></i></button>
+                    <button class="nav-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+            <div class="testimonials-content">
+                <h2>What Our Customers Say About Us</h2>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="quote">"</div>
+                        <p>Working with your design team was an absolute pleasure. The attention to detail and
+                            creativity exceeded my expectations. Thank you for making my home beautiful!</p>
+                        <div class="testimonial-author">
+
+                            <div class="author-info">
+                                <h4>Sophie Carter</h4>
+                                <p>New York, USA</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="quote">"</div>
+                        <p>Exceptional service! From the initial consultation to the final reveal, your team
+                            demonstrated professionalism and a keen eye for design. Highly recommend!</p>
+                        <div class="testimonial-author">
+
+                            <div class="author-info">
+                                <h4>James Bennett</h4>
+                                <p>Toronto, Canada</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="newsletter-container">
+            <h2>Subscribe to Our Newsletter for Design Insights</h2>
+            <p>Be the first to discover trends, inspirations, and special offers as we bring the world of design
+                directly to your inbox</p>
+            <form class="newsletter-form">
+                <div class="input-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" placeholder="Enter your email address" required>
+                </div>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <div class="footer-logo">
+                    <span>VivaDecor</span>
+                </div>
+                <p>VivaDecor your premier destination for luxury and modern interior design</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h3>Our Services</h3>
+                <ul>
+                    <li><a href="#">Interior design</a></li>
+                    <li><a href="#">Outdoor design</a></li>
+                    <li><a href="#">Lightning design</a></li>
+                    <li><a href="#">Office design</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Other Links</h3>
+                <ul>
+                    <li><a href="#">Reviews</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Pricing</a></li>
+                    <li><a href="#">Press inquires</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <p>info@vivadecor.com</p>
+                <p>Design Avenue Cityville, CA 90210 United States</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
+<script>// Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+
+    // Newsletter form submission
+    document.querySelector('.newsletter-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const email = this.querySelector('input[type="email"]').value;
+        if (email) {
+            alert('Thank you for subscribing to our newsletter!');
+            this.reset();
+        }
+    });
+
+    // Accordion functionality
+    document.querySelectorAll('.accordion-header').forEach(header => {
+        header.addEventListener('click', function () {
+            const item = this.parentElement;
+            const icon = this.querySelector('i');
+
+            // Toggle icon
+            if (icon.classList.contains('fa-plus')) {
+                icon.classList.remove('fa-plus');
+                icon.classList.add('fa-minus');
+            } else {
+                icon.classList.remove('fa-minus');
+                icon.classList.add('fa-plus');
+            }
+
+            // Add accordion content if needed
+            if (!item.querySelector('.accordion-content')) {
+                const content = document.createElement('div');
+                content.className = 'accordion-content';
+                content.style.padding = '1rem';
+                content.style.borderTop = '1px solid #e0e0e0';
+                content.innerHTML = '<p>Detailed information about this service will be displayed here.</p>';
+                item.appendChild(content);
+            } else {
+                const content = item.querySelector('.accordion-content');
+                content.remove();
+            }
+        });
+    });
+
+    // Button hover effects
+    document.querySelectorAll('button').forEach(button => {
+        button.addEventListener('mouseenter', function () {
+            this.style.transform = 'translateY(-2px)';
+        });
+
+        button.addEventListener('mouseleave', function () {
+            this.style.transform = 'translateY(0)';
+        });
+    });
+
+    // Service card hover effects
+    document.querySelectorAll('.service-card').forEach(card => {
+        card.addEventListener('mouseenter', function () {
+            this.style.transform = 'translateY(-10px)';
+            this.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.15)';
+        });
+
+        card.addEventListener('mouseleave', function () {
+            this.style.transform = 'translateY(0)';
+            this.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+        });
+    });
+
+    // Header scroll effect
+    window.addEventListener('scroll', function () {
+        const header = document.querySelector('.header');
+        if (window.scrollY > 100) {
+            header.style.background = 'rgba(255, 255, 255, 0.98)';
+            header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+        } else {
+            header.style.background = 'rgba(255, 255, 255, 0.95)';
+            header.style.boxShadow = 'none';
+        }
+    });
+
+    // Testimonial navigation (placeholder functionality)
+    document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.addEventListener('click', function () {
+            // This would typically cycle through different testimonials
+            console.log('Navigation button clicked');
+        });
+    });
+
+    // Form validation
+    document.querySelectorAll('input[type="email"]').forEach(input => {
+        input.addEventListener('blur', function () {
+            const email = this.value;
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (email && !emailRegex.test(email)) {
+                this.style.borderColor = '#ff4444';
+                this.setAttribute('title', 'Please enter a valid email address');
+            } else {
+                this.style.borderColor = '#e0e0e0';
+                this.removeAttribute('title');
+            }
+        });
+    });
+
+    // Intersection Observer for animations (optional)
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function (entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+
+    // Observe elements for animation
+    document.querySelectorAll('.service-card, .step-item, .testimonial-card').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(el);
+    }); </script>
